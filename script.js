@@ -21,6 +21,10 @@ $(document).ready(() => {
     curVal = `${event.target.value}`;
   });
 
+  //   $('#exchange').click((event) => {
+
+  //   });
+
   $('#submit').click(() => {
     $.ajax({
       type: 'GET',
