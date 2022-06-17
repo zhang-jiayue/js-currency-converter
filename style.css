@@ -85,3 +85,14 @@ button:hover span:after {
   opacity: 1;
   right: 0;
 }
+.options select::-webkit-scrollbar {
+  width: 8px;
+}
+.options select::-webkit-scrollbar-track {
+  background: #fff;
+}
+.options select::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+  border-right: 2px solid #ffffff;
+}
