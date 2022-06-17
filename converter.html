@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/css/selectize.bootstrap2.css"
+      integrity="sha512-Q4lVRLPgL4dk2/TIxGMiaTQszMFzW6/wULNrA0r4FCeu2eVwgfPDOXbZtntaWMV52uvKFmRx09as0caMjOeYBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Currency Convert</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+        background: #675afe;
+        overflow: hidden;
+      }
+      .container {
+        width: 620px;
+        padding: 30px;
+        border-radius: 7px;
+        background: #fff;
+        box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05);
+        font-family: 'Poppins', sans-serif;
+      }
+      .heading {
+        text-align: center;
+        font-size: 1.8rem;
+      }
+      .main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 2rem;
+      }
+
+      /* .swap {
+        align-self: flex-end;
+        padding: 5px;
+        cursor: pointer;
+      } */
+
+      .options select {
+        padding: 5px;
+        width: 70px;
+        align-content: center;
+        align-self: center;
+        margin-top: 0.7rem;
+        margin-right: 1rem;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .input input {
+        all: unset;
+        display: inline-block;
+        margin-top: 0.2rem;
+        width: 175px;
+        height: 48px;
+        padding: 5px;
+        background-color: #ebebeb;
+        /* color: #46406c; */
+        font-size: 1.5rem;
+        border: none;
+        box-sizing: border-box;
+        border-radius: 5px;
+        font-weight: 500;
+        appearance: textfield;
+        font-family: 'Poppins', sans-serif;
+      }
+      .svg {
+        margin-top: 0.2rem;
+      }
+      .target {
+        transform: translateX(-5%);
+      }
+      /* .result {
+        margin-top: 1.5rem;
+        width: 100%;
+        height: 50px;
+        text-align: center;
+        color: #fff;
+        background-color: #46406c;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+      }
+      .result:active {
+        background-color: #46406c;
+      } */
+      .btn {
+        display: inline-block;
+        background-color: #7b38d8;
+        border-radius: 10px;
+        border: 4px double #cccccc;
+        color: #eeeeee;
+        text-align: center;
+        font-size: 15px;
+        padding: 20px;
+        width: 190px;
+        height: 68px;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="heading">Currency Converter</h2>
+      <div class="main">
+        <div class="options">
+          <select id="from">
+            <option value="USD">USD</option> <option value="AED">AED</option> <option value="ARS">ARS</option> 
+            <option value="AUD">AUD</option> <option value="BGN">BGN</option> <option value="BRL">BRL</option> 
+            <option value="BSD">BSD</option> <option value="CAD">CAD</option> <option value="CHF">CHF</option> 
+            <option value="CLP">CLP</option> <option value="CNY">CNY</option> <option value="COP">COP</option> 
+            <option value="CZK">CZK</option> <option value="DKK">DKK</option> <option value="DOP">DOP</option> 
+            <option value="EGP">EGP</option> <option value="EUR">EUR</option> <option value="FJD">FJD</option> 
+            <option value="GBP">GBP</option> <option value="GTQ">GTQ</option> <option value="HKD">HKD</option> 
+            <option value="HRK">HRK</option> <option value="HUF">HUF</option> <option value="IDR">IDR</option> 
+            <option value="ILS">ILS</option> <option value="INR">INR</option> <option value="ISK">ISK</option> 
+            <option value="JPY">JPY</option> <option value="KRW">KRW</option> <option value="KZT">KZT</option> 
+            <option value="MVR">MVR</option> <option value="MXN">MXN</option> <option value="MYR">MYR</option> 
+            <option value="NOK">NOK</option> <option value="NZD">NZD</option> <option value="PAB">PAB</option> 
+            <option value="PEN">PEN</option> <option value="PHP">PHP</option> <option value="PKR">PKR</option> 
+            <option value="PLN">PLN</option> <option value="PYG">PYG</option> <option value="RON">RON</option> 
+            <option value="RUB">RUB</option> <option value="SAR">SAR</option> <option value="SEK">SEK</option> 
+            <option value="SGD">SGD</option> <option value="THB">THB</option> <option value="TRY">TRY</option> 
+            <option value="TWD">TWD</option> <option value="UAH">UAH</option> <option value="UYU">UYU</option> 
+            <option value="ZAR">ZAR</option> 
+          </select>
+        </div>
+        <div class="input"> <input id="inputValue" /></div>
+        <svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#ffeabb;}.cls-2{fill:#f7bf75;}</style></defs><g transform="translate(5, -2)" data-name="Exchange Currency" id="Exchange_Currency"><path class="cls-1" d="M6,13.13a4.18,4.18,0,1,1-4.18,4.18A4.19,4.19,0,0,1,6,13.13"/><path class="cls-1" d="M17.68,2.51A4.18,4.18,0,1,1,13.5,6.69a4.18,4.18,0,0,1,4.18-4.18"/><path class="cls-2" d="M6,14.42a2.9,2.9,0,1,1-2.89,2.89A2.89,2.89,0,0,1,6,14.42"/><path class="cls-2" d="M17.68,4A2.74,2.74,0,1,1,15,6.69,2.74,2.74,0,0,1,17.68,4"/><path d="M6,22a4.68,4.68,0,1,0-4.68-4.68A4.69,4.69,0,0,0,6,22Zm0-8.36a3.68,3.68,0,1,1-3.68,3.68A3.69,3.69,0,0,1,6,13.63Z"/><path d="M6.05,17.78a.27.27,0,0,1,.27.27.28.28,0,0,1-.46.2.24.24,0,0,1-.06-.09.5.5,0,1,0-.92.39,1.18,1.18,0,0,0,.27.4,1.28,1.28,0,0,0,.4.27v.13a.5.5,0,0,0,.5.5.5.5,0,0,0,.5-.5v-.13a1.27,1.27,0,0,0-.5-2.44.27.27,0,0,1-.27-.27.28.28,0,0,1,.46-.2l.06.09A.5.5,0,0,0,7.23,16a1.26,1.26,0,0,0-.28-.4,1.09,1.09,0,0,0-.4-.27v-.13a.5.5,0,0,0-.5-.5.5.5,0,0,0-.5.5v.13a1.27,1.27,0,0,0,.5,2.44Z"/><path d="M17.68,11.37A4.68,4.68,0,1,0,13,6.69,4.69,4.69,0,0,0,17.68,11.37Zm0-8.36A3.68,3.68,0,1,1,14,6.69,3.68,3.68,0,0,1,17.68,3Z"/><path d="M14.45,11.75a.48.48,0,0,0-.7,0l-1.37,1.36a.5.5,0,0,0-.46-.46.52.52,0,0,0-.53.47l-.07,1.23a.5.5,0,0,0,.14.39.52.52,0,0,0,.35.14h0l1.23-.07a.5.5,0,0,0,0-1l1.37-1.37A.48.48,0,0,0,14.45,11.75Z"/><path d="M9.62,12.69a.5.5,0,0,0,.36-.14l1.37-1.37a.5.5,0,0,0,.46.46h0a.51.51,0,0,0,.5-.47l.07-1.23a.53.53,0,0,0-.15-.39.48.48,0,0,0-.38-.14l-1.23.07a.5.5,0,0,0,0,1L9.27,11.84a.51.51,0,0,0,0,.71A.49.49,0,0,0,9.62,12.69Z"/><path d="M15.68,7.19h.19A1.84,1.84,0,0,0,19,8.34a.48.48,0,0,0,0-.7.5.5,0,0,0-.71,0,.81.81,0,0,1-.59.24.83.83,0,0,1-.81-.69h1a.5.5,0,0,0,.5-.5.5.5,0,0,0-.5-.5h-1a.83.83,0,0,1,.81-.69.81.81,0,0,1,.59.24.5.5,0,0,0,.71,0A.5.5,0,0,0,19,5a1.86,1.86,0,0,0-1.3-.53,1.83,1.83,0,0,0-1.83,1.69h-.19a.5.5,0,0,0-.5.5A.5.5,0,0,0,15.68,7.19Z"/></g></svg>     
+        <div class="options">
+            <select id="to">
+            <option value="USD">USD</option> <option value="AED">AED</option> <option value="ARS">ARS</option> 
+            <option value="AUD">AUD</option> <option value="BGN">BGN</option> <option value="BRL">BRL</option> 
+            <option value="BSD">BSD</option> <option value="CAD">CAD</option> <option value="CHF">CHF</option> 
+            <option value="CLP">CLP</option> <option value="CNY">CNY</option> <option value="COP">COP</option> 
+            <option value="CZK">CZK</option> <option value="DKK">DKK</option> <option value="DOP">DOP</option> 
+            <option value="EGP">EGP</option> <option value="EUR">EUR</option> <option value="FJD">FJD</option> 
+            <option value="GBP">GBP</option> <option value="GTQ">GTQ</option> <option value="HKD">HKD</option> 
+            <option value="HRK">HRK</option> <option value="HUF">HUF</option> <option value="IDR">IDR</option> 
+            <option value="ILS">ILS</option> <option value="INR">INR</option> <option value="ISK">ISK</option> 
+            <option value="JPY">JPY</option> <option value="KRW">KRW</option> <option value="KZT">KZT</option> 
+            <option value="MVR">MVR</option> <option value="MXN">MXN</option> <option value="MYR">MYR</option> 
+            <option value="NOK">NOK</option> <option value="NZD">NZD</option> <option value="PAB">PAB</option> 
+            <option value="PEN">PEN</option> <option value="PHP">PHP</option> <option value="PKR">PKR</option> 
+            <option value="PLN">PLN</option> <option value="PYG">PYG</option> <option value="RON">RON</option> 
+            <option value="RUB">RUB</option> <option value="SAR">SAR</option> <option value="SEK">SEK</option> 
+            <option value="SGD">SGD</option> <option value="THB">THB</option> <option value="TRY">TRY</option> 
+            <option value="TWD">TWD</option> <option value="UAH">UAH</option> <option value="UYU">UYU</option> 
+            <option value="ZAR">ZAR</option> 
+            </select>
+          </div>
+          <div class="input"><input disabled type="text" id="outputValue" /></div>
+        </div>
+        <div style="text-align:center"><button class="btn" id="submit">Get Exchange Rate</button></div>
+      </div>
+    </div>
+    <!-- close container -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/js/selectize.min.js"
+      integrity="sha512-8MxMBA7Rt4u4Hub7fgUVqRm2XQxEUybzTK5D2KAKHfToOR/5+1Y3dll3U4rtnyleGdW0O5GG2wYGAp9ZaebsbQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      // include api for currency change
+      const api =
+        'https://v6.exchangerate-api.com/v6/3e1ecb4f49ea8cf62c65e81e/latest/USD';
+      var inputSelect = document.querySelector('.from');
+      var inputValue = document.querySelector('#inputValue');
+      var outputSelect = document.querySelector('.to');
+      var curIn;
+      var curOut;
+      var curVal;
+      var resu;
+      $(document).ready(() => {
+        // listen to input
+        $('#from').change((event) => {
+          curIn = `${event.target.value}`;
+        });
+
+        $('#to').change((event) => {
+          curOut = `${event.target.value}`;
+        });
+
+        $('#inputValue').change((event) => {
+          curVal = `${event.target.value}`;
+        });
+
+        $('#submit').click(() => {
+          $.ajax({
+            type: 'GET',
+            url: api,
+            dataType: 'json',
+            success: function (data, status, xhr) {
+              let from = data.conversion_rates[curIn];
+              let to = data.conversion_rates[curOut];
+              resu = ((to / from) * curVal).toFixed(3);
+              $('#outputValue').val(`${resu}`);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
