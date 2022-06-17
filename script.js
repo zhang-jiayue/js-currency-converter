@@ -1,3 +1,4 @@
+// include api for currency change
 const api =
   'https://v6.exchangerate-api.com/v6/3e1ecb4f49ea8cf62c65e81e/latest/USD';
 var inputSelect = document.querySelector('.from');
@@ -20,10 +21,6 @@ $(document).ready(() => {
   $('#inputValue').change((event) => {
     curVal = `${event.target.value}`;
   });
-
-  //   $('#exchange').click((event) => {
-
-  //   });
 
   $('#submit').click(() => {
     $.ajax({
