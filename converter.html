@@ -12,109 +12,7 @@
       referrerpolicy="no-referrer"
     />
     <title>Currency Convert</title>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
-      body {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 10px;
-        background: #675afe;
-        overflow: hidden;
-      }
-      .container {
-        width: 620px;
-        padding: 30px;
-        border-radius: 7px;
-        background: #fff;
-        box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05);
-        font-family: 'Poppins', sans-serif;
-      }
-      .heading {
-        text-align: center;
-        font-size: 1.8rem;
-      }
-      .main {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-top: 2rem;
-      }
-
-      /* .swap {
-        align-self: flex-end;
-        padding: 5px;
-        cursor: pointer;
-      } */
-
-      .options select {
-        padding: 5px;
-        width: 70px;
-        align-content: center;
-        align-self: center;
-        margin-top: 0.7rem;
-        margin-right: 1rem;
-        font-family: 'Poppins', sans-serif;
-      }
-
-      .input input {
-        all: unset;
-        display: inline-block;
-        margin-top: 0.2rem;
-        width: 175px;
-        height: 48px;
-        padding: 5px;
-        background-color: #ebebeb;
-        /* color: #46406c; */
-        font-size: 1.5rem;
-        border: none;
-        box-sizing: border-box;
-        border-radius: 5px;
-        font-weight: 500;
-        appearance: textfield;
-        font-family: 'Poppins', sans-serif;
-      }
-      .svg {
-        margin-top: 0.2rem;
-      }
-      .target {
-        transform: translateX(-5%);
-      }
-      /* .result {
-        margin-top: 1.5rem;
-        width: 100%;
-        height: 50px;
-        text-align: center;
-        color: #fff;
-        background-color: #46406c;
-        outline: none;
-        border: none;
-        border-radius: 5px;
-      }
-      .result:active {
-        background-color: #46406c;
-      } */
-      .btn {
-        display: inline-block;
-        background-color: #7b38d8;
-        border-radius: 10px;
-        border: 4px double #cccccc;
-        color: #eeeeee;
-        text-align: center;
-        font-size: 15px;
-        padding: 20px;
-        width: 190px;
-        height: 68px;
-        -webkit-transition: all 0.5s;
-        -moz-transition: all 0.5s;
-        -o-transition: all 0.5s;
-        transition: all 0.5s;
-        cursor: pointer;
-        margin: 5px;
-        font-family: 'Poppins', sans-serif;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css"></link>
   </head>
   <body>
     <div class="container">
@@ -168,10 +66,10 @@
           </div>
           <div class="input"><input disabled type="text" id="outputValue" /></div>
         </div>
-        <div style="text-align:center"><button class="btn" id="submit">Get Exchange Rate</button></div>
+        <div style="text-align:center"><button class="button" id="submit">Get Exchange Rate</button></div>
       </div>
     </div>
-    <!-- close container -->
+    <script src="script.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -183,45 +81,5 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script>
-      // include api for currency change
-      const api =
-        'https://v6.exchangerate-api.com/v6/3e1ecb4f49ea8cf62c65e81e/latest/USD';
-      var inputSelect = document.querySelector('.from');
-      var inputValue = document.querySelector('#inputValue');
-      var outputSelect = document.querySelector('.to');
-      var curIn;
-      var curOut;
-      var curVal;
-      var resu;
-      $(document).ready(() => {
-        // listen to input
-        $('#from').change((event) => {
-          curIn = `${event.target.value}`;
-        });
-
-        $('#to').change((event) => {
-          curOut = `${event.target.value}`;
-        });
-
-        $('#inputValue').change((event) => {
-          curVal = `${event.target.value}`;
-        });
-
-        $('#submit').click(() => {
-          $.ajax({
-            type: 'GET',
-            url: api,
-            dataType: 'json',
-            success: function (data, status, xhr) {
-              let from = data.conversion_rates[curIn];
-              let to = data.conversion_rates[curOut];
-              resu = ((to / from) * curVal).toFixed(3);
-              $('#outputValue').val(`${resu}`);
-            },
-          });
-        });
-      });
-    </script>
   </body>
 </html>
